@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a0010" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Путь к сердцу</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ==============================
+     PRELOADER
+============================== -->
+<div id="preloader">
+  <div class="preloader-heart">♥</div>
+  <div class="preloader-text">загружаем чувства...</div>
+</div>
+
+<!-- ==============================
+     CANVAS ДЛЯ ЧАСТИЦ (общий фон)
+============================== -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ==============================
+     ЭКРАН 1: СТАРТ
+============================== -->
+<section id="screen-start" class="screen active">
+  <div class="floating-hearts-container" id="floatingHeartsStart"></div>
+  <div class="screen-content start-content">
+    <div class="title-wrap">
+      <div class="subtitle-top">маленькое путешествие</div>
+      <h1 class="main-title">Путь<br/><em>к сердцу</em></h1>
+      <div class="title-deco">✦ ✦ ✦</div>
+    </div>
+    <p class="start-desc">Пройди четыре испытания<br/>и узнай что-то важное</p>
+    <button class="btn-primary" id="btnStart">
+      <span class="btn-text">Начать</span>
+      <span class="btn-glow"></span>
+    </button>
+    <div class="step-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     ЭКРАН 2: СОБЕРИ СЕРДЕЧКИ
+============================== -->
+<section id="screen-hearts" class="screen">
+  <div class="screen-header">
+    <div class="screen-num">01</div>
+    <div class="screen-title-sm">Собери сердца</div>
+    <div class="score-display">
+      <span id="heartScore">0</span> / 10
+    </div>
+  </div>
+  <div class="step-dots">
+    <span class="dot"></span>
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <canvas id="hearts-canvas"></canvas>
+  <div class="hearts-hint">
+    <span>Двигай пальцем чтобы собирать ♥</span>
+  </div>
+  <div id="hearts-complete" class="complete-overlay hidden">
+    <div class="complete-inner">
+      <div class="complete-icon">♥</div>
+      <div class="complete-text">Все сердца<br/>собраны!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     ЭКРАН 3: ЛАБИРИНТ
+============================== -->
+<section id="screen-maze" class="screen">
+  <div class="screen-header">
+    <div class="screen-num">02</div>
+    <div class="screen-title-sm">Найди путь</div>
+  </div>
+  <div class="step-dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </div>
+  <div class="maze-wrap">
+    <canvas id="maze-canvas"></canvas>
+  </div>
+  <div class="maze-controls">
+    <div class="maze-btn-row">
+      <button class="maze-btn" id="mUp">▲</button>
+    </div>
+    <div class="maze-btn-row">
+      <button class="maze-btn" id="mLeft">◀</button>
+      <button class="maze-btn" id="mDown">▼</button>
+      <button class="maze-btn" id="mRight">▶</button>
+    </div>
+  </div>
+  <div class="maze-hint">Свайп или кнопки для управления</div>
+  <div id="maze-complete" class="complete-overlay hidden">
+    <div class="complete-inner">
+      <div class="complete-icon">✦</div>
+      <div class="complete-text">Путь найден!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     ЭКРАН 4: ПОСЛАНИЯ
+============================== -->
+<section id="screen-messages" class="screen">
+  <div class="screen-header">
+    <div class="screen-num">03</div>
+    <div class="screen-title-sm">Тайные послания</div>
+  </div>
+  <div class="step-dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot active"></span>
+  </div>
+  <p class="messages-hint">Нажми на каждую карточку</p>
+  <div class="cards-grid" id="cardsGrid"></div>
+  <button class="btn-secondary hidden" id="btnToFinal">
+    <span>Дальше →</span>
+  </button>
+</section>
+
+<!-- ==============================
+     ФИНАЛЬНЫЙ ЭКРАН
+============================== -->
+<section id="screen-final" class="screen">
+  <div class="floating-hearts-container" id="floatingHeartsFinal"></div>
+  <div class="screen-content final-content">
+    <div class="final-glow-orb"></div>
+    <div class="final-symbol">♥</div>
+    <h2 class="final-title" id="finalTitle"></h2>
+    <p class="final-message" id="finalMessage"></p>
+    <div class="final-deco">✦ ✦ ✦</div>
+    <button class="btn-primary" id="btnRestart">
+      <span class="btn-text">Начать заново</span>
+      <span class="btn-glow"></span>
+    </button>
+  </div>
+</section>
+
+<script src="game.js"></script>
+</body>
+</html>
